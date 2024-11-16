@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color:rgb(159, 210, 217);
+            outline-style: ridge;
+            outline-color:red;
+            outline-width: 5px;          
+            
+
+        
+        ;
+            
+        .calculator {
+            width: 250px;
+            padding: 20px;
+            
+            box-shadow: 0  4px 10px rgb(0, 0, 0);
+            border: 5px solid #232223;
+           
+            
+            background-color: #fbfbfb;
+        }
+        .display {
+            width: 90%;
+            height: 55px;
+            text-align: right;
+            padding: 10px;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 5px rgb(39, 41, 40);
+            border: 5px solid #121212;
+            border-radius: 30px 30px;
+            background-color: #f9f9f9;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #a0e7e7;
+            transition: background-color 0.3s;
+        
+        }
+        .button:hover {
+            background-color: #ccc;
+        }
+        .button.operation {
+            background-color: #332dec;
+            color: white;
+        }
+        .button.equals {
+            grid-column: span 2;
+            background-color: #2196F3;
+            color: white;
+        }
+       .calculator-ON {border-radius: 20%;
+        background-color: red;
+        border: #181515;
+        width: 50px;
+        height: 50px;
+
+        }
+    </style>
+</head>
+<body>
+    
+<div class="calculator">
+    <input type="text" id="display" class="display" disabled>
+    <div class="buttons">
+        <button class="button" onclick="appendToDisplay('7')">7</button>
+        <button class="button" onclick="appendToDisplay('8')">8</button>
+        <button class="button" onclick="appendToDisplay('9')">9</button>
+        <button class="calculator-ON">ON</button>
+        <button class="button" onclick="appendToDisplay('4')">4</button>
+        <button class="button" onclick="appendToDisplay('5')">5</button>
+        <button class="button" onclick="appendToDisplay('6')">6</button>
+        <button class="button operation" onclick="appendToDisplay('*')">*</button>
+
+        <button class="button" onclick="appendToDisplay('1')">1</button>
+        <button class="button" onclick="appendToDisplay('2')">2</button>
+        <button class="button" onclick="appendToDisplay('3')">3</button>
+        <button class="button operation" onclick="appendToDisplay('-')">-</button>
+
+        <button class="button" onclick="appendToDisplay('0')">0</button>
+        <button class="button" onclick="appendToDisplay('.')">.</button>
+        <button class="button operation" onclick="appendToDisplay('/')">/</button>
+
+
+  
+        <button class="button operation" onclick="appendToDisplay('+')">+</button>
+        <button class="button operation" onclick="appendToDisplay('%')">%</button>
+        
+        <button class="button" onclick="clearDisplay()">AC</button>
+
+        <button class="button equals" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById("display").value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById("display").value = "";
+    }
+
+    function calculate() {
+        try {
+            let result = eval(document.getElementById("display").value);
+            document.getElementById("display").value = result;
+        } catch (Error) {
+            document.getElementById("display").value = "Error";
+        }
+    }
+</script>
+
+</body>
+</html>
